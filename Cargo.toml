@@ -1,0 +1,18 @@
+[package]
+name = "test-dll"
+edition = "2024"
+authors = [
+    "Lily Fox <angelrecovery@icloud.com>"
+]
+license = "BSD-2-Clause"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+windows = { version = "0.61.0", features = [
+    "Win32_Foundation",
+    "Win32_System_LibraryLoader",
+    "Win32_System_SystemServices",
+    "Win32_UI_WindowsAndMessaging",
+] }
