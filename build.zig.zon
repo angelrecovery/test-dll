@@ -1,0 +1,13 @@
+.{
+    .name = .test_dll,
+    .version = "0.0.0",
+    .fingerprint = 0x44ae6ff174711290,
+    .minimum_zig_version = "0.14.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "LICENSE",
+        "README.md",
+    },
+}
