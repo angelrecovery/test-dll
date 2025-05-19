@@ -6,7 +6,7 @@ export fn DllMain(hinstDLL: windows.HINSTANCE, fdwReason: windows.DWORD, _: wind
     if (fdwReason == windows.DLL_PROCESS_ATTACH) {
         _ = windows.DisableThreadLibraryCalls(hinstDLL);
 
-        const thread: windows.HANDLE = windows.CreateThread(
+        const thread = windows.CreateThread(
             null,
             0,    
             showMessageBoxThread, 
