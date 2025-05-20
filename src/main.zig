@@ -23,9 +23,7 @@ export fn DllMain(hinstDLL: windows.HINSTANCE, fdwReason: windows.DWORD, _: wind
     return windows.TRUE;
 }
 
-fn showMessageBoxThread(lpParameter: ?*anyopaque) callconv(.C) windows.DWORD {
-    _ = lpParameter;
-
+fn showMessageBoxThread(_: ?*anyopaque) callconv(.C) windows.DWORD {
     _ = windows.MessageBoxA(
         null,
         "Loaded",
