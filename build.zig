@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) void {
 
     const lib = b.addSharedLibrary(.{
         .name = "test_dll",
-        .root_source_file =  b.path("src/main.zig"),
+        .root_source_file = b.path("src/main.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -14,9 +14,6 @@ pub fn build(b: *std.Build) void {
     lib.linkLibC();
     lib.linkSystemLibrary("kernel32");
     lib.linkSystemLibrary("user32");
-
-    lib.rdynamic = true;
-    lib.linker_allow_shlib_undefined = true;
 
     b.installArtifact(lib);
 }

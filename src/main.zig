@@ -2,16 +2,16 @@ const windows = @cImport({
     @cInclude("windows.h");
 });
 
-export fn DllMain(hinstDLL: windows.HINSTANCE, fdwReason: windows.DWORD, _: windows.LPVOID) callconv(.C) windows.BOOL {
+pub export fn DllMain(hinstDLL: *anyopaque, fdwReason: windows.DWORD, _: ?*anyopaque) callconv(.C) windows.BOOL {
     if (fdwReason == windows.DLL_PROCESS_ATTACH) {
-        _ = windows.DisableThreadLibraryCalls(hinstDLL);
+        _ = windows.DisableThreadLibraryCalls(@ptrCast(@alignCast(hinstDLL)));
 
         const thread = windows.CreateThread(
             null,
-            0,    
-            showMessageBoxThread, 
-            null, 
-            0,    
+            0,
+            showMessageBoxThread,
+            null,
+            0,
             null,
         );
 
